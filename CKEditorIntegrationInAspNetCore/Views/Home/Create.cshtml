@@ -1,0 +1,48 @@
+﻿<!-- Views/Home/Create.cshtml -->
+@model Post
+
+@{
+    //Add the Layout File
+    Layout= "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Post</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Content">Content</label>
+        <textarea id="editor" name="Content" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    function loadScript(url, callback) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.onload = callback;
+        script.src = url;
+        document.head.appendChild(script);
+    }
+    loadScript('https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js', function () {
+        CKEDITOR.replace('editor', {
+            height: 500,
+            toolbarGroups: [
+                { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                { name: 'editing', groups: ['find', 'selection', 'spellchecker'] },
+                { name: 'links' },
+                { name: 'insert' },
+                { name: 'tools' },
+                { name: 'document', groups: ['mode', 'document', 'doctools'] },
+                { name: 'others' },
+                '/',
+                { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'] },
+                { name: 'styles' },
+                { name: 'colors' },
+                { name: 'about' }
+            ]
+        });
+    });
+</script>
+
